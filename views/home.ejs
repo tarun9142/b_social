@@ -1,1 +1,9 @@
 <h1>Views /<%= title %></h1>
+
+<section id="feed-posts">
+    <h4>posts</h4>
+    <form action="/posts/create" id="new-post-form" method="post">
+        <textarea name="content" id="" cols="30" rows="4"></textarea>
+        <input type="submit" value="post">
+    </form>
+</section>
