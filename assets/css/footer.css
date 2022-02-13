@@ -1,0 +1,16 @@
+footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: blueviolet;
+  color: white;
+}
+
+footer #links {
+  display: flex;
+  flex-direction: column;
+}
+
+footer .social {
+  display: flex;
+  flex-direction: column;
+}

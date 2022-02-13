@@ -1,0 +1,14 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color: blueviolet;
+
+    ul{
+        list-style-type: none;
+        display: flex;
+
+        li{
+            padding: 4px;
+        }
+    }
+}

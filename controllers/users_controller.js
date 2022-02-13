@@ -62,3 +62,11 @@ module.exports.createUser = function(req,res){
 module.exports.createSession = function(req,res){
     return res.redirect('/');
 }
+
+// kill session for signout 
+
+module.exports.killSession = function(req,res){
+    req.logout();
+    
+    return res.redirect('/');
+}

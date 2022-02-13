@@ -1,3 +1,21 @@
-<header>
-    page header
+<header id="page-header">
+    <h2><a href="/">B social</a></h2>
+
+    <ul>
+        <% if (locals.user) { %>
+         <li id="user-name">
+             <a href="/users/profile"><%= user.name %> </a>
+         </li>
+         <li class="auth-link">
+             <a href="/users/sign-out">Sign out</a>
+         </li>
+        <% } else{%>
+          <li class="auth-link">
+              <a href="/users/sign-in">Sign in</a>
+          </li>
+          <li class="auth-link">
+            <a href="/users/sign-up">Sign up</a>
+          </li>
+        <% } %> 
+    </ul>
 </header>
