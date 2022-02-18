@@ -5,6 +5,10 @@ footer {
   color: white;
 }
 
+footer a {
+  color: antiquewhite;
+}
+
 footer #links {
   display: flex;
   flex-direction: column;

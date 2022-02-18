@@ -4,6 +4,10 @@ header {
   background-color: blueviolet;
 }
 
+header a {
+  color: antiquewhite;
+}
+
 header ul {
   list-style-type: none;
   display: flex;
