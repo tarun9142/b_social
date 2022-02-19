@@ -19,9 +19,6 @@ module.exports.update = function(req,res){
     }
 }
 
-module.exports.posts = function(req,res){
-    return res.end('<h1>posts</h1>');
-}
 
 // render sign up page 
 module.exports.signUp = function(req,res){
