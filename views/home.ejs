@@ -8,7 +8,7 @@
       <input type="submit" value="post" />
     </form>
     <% } %>
-    <div class="posts-container">
+    <div id="posts-container">
       <ul>
         <% for(post of posts) { %> <%- include('_post') %> <% } %>
       </ul>
@@ -26,3 +26,4 @@
     </ul>
   </section>
 </div>
+<script src="/js/home_posts.js"></script>
