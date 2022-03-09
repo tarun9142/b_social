@@ -9,16 +9,43 @@ module.exports.profile = function(req,res){
     });
 }
 
-module.exports.update = function(req,res){
-    if(req.user.id == req.params.id){
-        User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
-            req.flash('success','profile updated successfully');
+module.exports.update = async function(req,res){
+    if (req.user.id == req.params.id){
+
+        try {
+            let user = await  User.findById(req.params.id);
+
+            User.uploadAvatar(req,res,function(err){
+                if(err){
+                    console.log('****multer error',err);
+                }
+
+                user.email = req.body.email;
+                user.name = req.body.name;
+                
+                if(req.file){
+                    user.avatar = User.avatarPath + '/' + req.file.filename; 
+                }
+                user.save();
+                return res.redirect('back');
+            })
+        } catch (error) {
+            req.flash('error',error);
             return res.redirect('back');
-        });
+        }
     }else{
         req.flash('error',"you don't have permission to update this profile");
         return res.status(401).send('unauthorized');
     }
+    // if(req.user.id == req.params.id){
+    //     User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
+    //         req.flash('success','profile updated successfully');
+    //         return res.redirect('back');
+    //     });
+    // }else{
+    //     req.flash('error',"you don't have permission to update this profile");
+    //     return res.status(401).send('unauthorized');
+    // }
 }
 
 
