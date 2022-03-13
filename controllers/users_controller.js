@@ -1,4 +1,6 @@
 const User = require('../models/user');
+const fs = require('fs');
+const path = require('path');
 
 module.exports.profile = function(req,res){
     User.findById(req.params.id,function(err,user){
@@ -24,6 +26,10 @@ module.exports.update = async function(req,res){
                 user.name = req.body.name;
                 
                 if(req.file){
+                    if(user.avatar){
+                        fs.unlinkSync(path.join(__dirname,'..',user.avatar));
+                    }
+
                     user.avatar = User.avatarPath + '/' + req.file.filename; 
                 }
                 user.save();
@@ -37,15 +43,6 @@ module.exports.update = async function(req,res){
         req.flash('error',"you don't have permission to update this profile");
         return res.status(401).send('unauthorized');
     }
-    // if(req.user.id == req.params.id){
-    //     User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
-    //         req.flash('success','profile updated successfully');
-    //         return res.redirect('back');
-    //     });
-    // }else{
-    //     req.flash('error',"you don't have permission to update this profile");
-    //     return res.status(401).send('unauthorized');
-    // }
 }
 
 

@@ -27,6 +27,9 @@ app.use(cookieParser());
 
 app.use(express.static('./assets'));
 
+// make uploads path available for the borwser
+app.use('/uploads', express.static(__dirname+'/uploads'));
+
 // extract styles and scripts from sub pages into layout
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
