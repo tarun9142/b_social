@@ -5,11 +5,11 @@ const ExtractJWT = require('passport-jwt').ExtractJwt;
 const User = require('../models/user');
 
 let opts = {
-    jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken,
+    jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
     secretOrKey: 'bsocial'
 }
 
-passport.use(new JWTstrategy(opts, function(jwtPayload, f=done){
+passport.use(new JWTstrategy(opts, function(jwtPayload, done){
     User.findById(jwtPayload._id,function(err,user){
         if(err){
             console.log('error finding user from jwt');
